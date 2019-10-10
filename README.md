@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Frontend
+
+A React frontend for a JSON API.
 
 ## Available Scripts
 
