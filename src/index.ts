@@ -5,4 +5,7 @@ import "style/app.scss"
 
 import App from "components/app"
 
-ReactDOM.render(<App />, document.getElementById("root"))
+ReactDOM.render(
+  React.createElement(App, {}, {}),
+  document.getElementById("root")
+)
