@@ -1,4 +1,4 @@
-import { HTTPError, fetch } from "utilities/api"
+import { fetch, HTTPError } from "utilities/api"
 
 test("fetch allows a simple GET without throwing an error", async () => {
   await fetch("https://utilities.mads.dev/v1/ip")

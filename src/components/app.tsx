@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
-import { getData, Post } from "services/data_service"
+import { getData, IPost } from "services/data_service"
 
 import Header from "components/ui/header"
 
-interface PostParams {
-  post: Post
+interface IPostParams {
+  post: IPost
 }
 
-const PostUI = ({ post }: PostParams): JSX.Element => {
+const PostUI = ({ post }: IPostParams): JSX.Element => {
   return (
     <div style={{ border: "1px solid #light-gray" }}>
       <h3>{post.title}</h3>
@@ -19,7 +19,7 @@ const PostUI = ({ post }: PostParams): JSX.Element => {
 }
 
 const App = (): JSX.Element => {
-  let [post, setPost] = useState<Post | null>(null)
+  const [post, setPost] = useState<IPost | null>(null)
 
   useEffect(() => {
     getData()

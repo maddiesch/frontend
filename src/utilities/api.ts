@@ -9,7 +9,7 @@
  *
  * body will be pre-populated with JSON if the parser is successful.
  */
-interface HTTPResponse {
+interface IHTTPResponse {
   /** The underlying HTTP response */
   response: Response
 
@@ -24,10 +24,10 @@ interface HTTPResponse {
  */
 class HTTPError extends Error {
   /** The HTTP status code that triggered the error */
-  code: number
+  public code: number
 
   /** The HTTP response that triggered the error */
-  response: Response
+  public response: Response
 
   /**
    * Create a new HTTP error
@@ -45,8 +45,8 @@ class HTTPError extends Error {
 const send = async (
   request: RequestInfo,
   init?: RequestInit | undefined
-): Promise<HTTPResponse> => {
-  let response = await fetch(request, init)
+): Promise<IHTTPResponse> => {
+  const response = await fetch(request, init)
 
   if (response.status < 200 || response.status >= 300) {
     throw new HTTPError(response)
