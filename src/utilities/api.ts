@@ -9,12 +9,12 @@
  *
  * body will be pre-populated with JSON if the parser is successful.
  */
-interface IHTTPResponse {
+interface IHTTPResponse<T> {
   /** The underlying HTTP response */
   response: Response
 
   /** The pre-parsed JSON response body */
-  body?: any
+  body?: T
 }
 
 /**
@@ -42,10 +42,10 @@ class HTTPError extends Error {
   }
 }
 
-const send = async (
+async function send<T>(
   request: RequestInfo,
   init?: RequestInit | undefined
-): Promise<IHTTPResponse> => {
+): Promise<IHTTPResponse<T>> {
   const response = await fetch(request, init)
 
   if (response.status < 200 || response.status >= 300) {
@@ -76,5 +76,5 @@ export {
    * @param request The HTTP request to send
    */
   send as fetch,
-  HTTPError
+  HTTPError,
 }
